@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>x-o</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .game {
+            width: 255px;
+            height: 314px;
+            text-align: center;
+            font-family: system-ui;
+            margin: auto;
+            margin-top: 10%;
+            background-color: #f9f9f9;
+            font-size: 30px;
+            font-weight: 500;
+            box-shadow: 0 5px 25px rgba(1 1 1 / 15);
+            transition: 1s ease;
+        }
+        
+        .game:hover {
+            transform: scale(1.1);
+        
+        }
+        
+        .title {
+            background-color: wheat;
+            border: 1px solid #f9f9f9;
+            padding: 5px 0;
+            margin: 5px 0;
+        }
+        
+        .square {
+            font-size: 50px;
+            font-weight: 500;
+            height: 80px;
+            width: 80px;
+            background-color: wheat;
+            float: left;
+            margin: 2px;
+            transition: 1s ease;
+        }
+        
+        .square:hover {
+            background-color: rgb(189, 166, 123);
+        }
+    </style>
+</head>
+<body>
+        <div class="game">
+            <div class="title"><span>X O</span> GAME</div>
+            <div id="item1" class="square" onclick="game(this.id)"></div>
+            <div id="item2" class="square" onclick="game(this.id)"></div>
+            <div id="item3" class="square" onclick="game(this.id)"></div>
+    
+            <div id="item4" class="square" onclick="game(this.id)"></div>
+            <div id="item5" class="square" onclick="game(this.id)"></div>
+            <div id="item6" class="square" onclick="game(this.id)"></div>
+    
+            <div id="item7" class="square" onclick="game(this.id)"></div>
+            <div id="item8" class="square" onclick="game(this.id)"></div>
+            <div id="item9" class="square" onclick="game(this.id)"></div>
+        </div>
+        <script>
+            let item1 = document.getElementById('item1')
+let item2 = document.getElementById('item2')
+let item3 = document.getElementById('item3')
+
+let item4 = document.getElementById('item4')
+let item5 = document.getElementById('item5')
+let item6 = document.getElementById('item6')
+
+let item7 = document.getElementById('item7')
+let item8 = document.getElementById('item8')
+let item9 = document.getElementById('item9')
+let title = document.querySelector('.title');
+let turn = 'x';
+
+function winner() {
+    if (item1.innerHTML === item2.innerHTML && item2.innerHTML === item3.innerHTML && item1.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item1.style.background = 'rgb(189, 166, 123)'
+        item2.style.background = 'rgb(189, 166, 123)'
+        item3.style.background = 'rgb(189, 166, 123)'
+        item4.innerHTML = ''
+        item5.innerHTML = ''
+        item6.innerHTML = ''
+        item7.innerHTML = ''
+        item8.innerHTML = ''
+        item9.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }else if(item4.innerHTML === item5.innerHTML && item5.innerHTML === item6.innerHTML && item5.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item4.style.background = 'rgb(189, 166, 123)'
+        item5.style.background = 'rgb(189, 166, 123)'
+        item6.style.background = 'rgb(189, 166, 123)'
+        item1.innerHTML = ''
+        item2.innerHTML = ''
+        item3.innerHTML = ''    
+        item7.innerHTML = ''
+        item8.innerHTML = ''
+        item9.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }else if (item7.innerHTML === item8.innerHTML && item8.innerHTML === item9.innerHTML && item9.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item7.style.background = 'rgb(189, 166, 123)'
+        item8.style.background = 'rgb(189, 166, 123)'
+        item9.style.background = 'rgb(189, 166, 123)'
+        item1.innerHTML = ''
+        item2.innerHTML = ''
+        item3.innerHTML = ''    
+        item4.innerHTML = ''
+        item5.innerHTML = ''
+        item6.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }else if (item1.innerHTML === item5.innerHTML && item5.innerHTML === item9.innerHTML && item9.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item1.style.background = 'rgb(189, 166, 123)'
+        item5.style.background = 'rgb(189, 166, 123)'
+        item9.style.background = 'rgb(189, 166, 123)'
+        item7.innerHTML = ''
+        item2.innerHTML = ''
+        item3.innerHTML = ''    
+        item4.innerHTML = ''
+        item8.innerHTML = ''
+        item6.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }else if (item3.innerHTML === item5.innerHTML && item5.innerHTML === item7.innerHTML && item5.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item3.style.background = 'rgb(189, 166, 123)'
+        item5.style.background = 'rgb(189, 166, 123)'
+        item7.style.background = 'rgb(189, 166, 123)'
+        item1.innerHTML = ''
+        item9.innerHTML = ''
+        item2.innerHTML = ''    
+        item4.innerHTML = ''
+        item8.innerHTML = ''
+        item6.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }else if (item1.innerHTML === item4.innerHTML && item4.innerHTML === item7.innerHTML && item4.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item1.style.background = 'rgb(189, 166, 123)'
+        item4.style.background = 'rgb(189, 166, 123)'
+        item7.style.background = 'rgb(189, 166, 123)'
+        item3.innerHTML = ''
+        item9.innerHTML = ''
+        item2.innerHTML = ''    
+        item5.innerHTML = ''
+        item8.innerHTML = ''
+        item6.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }else if (item2.innerHTML === item5.innerHTML && item5.innerHTML === item8.innerHTML && item8.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item2.style.background = 'rgb(189, 166, 123)'
+        item5.style.background = 'rgb(189, 166, 123)'
+        item8.style.background = 'rgb(189, 166, 123)'
+        item3.innerHTML = ''
+        item9.innerHTML = ''
+        item1.innerHTML = ''    
+        item4.innerHTML = ''
+        item7.innerHTML = ''
+        item6.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }else if (item3.innerHTML === item6.innerHTML && item6.innerHTML === item9.innerHTML && item9.innerHTML !== ''){
+        title.innerHTML = `GAME OVER`
+        item3.style.background = 'rgb(189, 166, 123)'
+        item6.style.background = 'rgb(189, 166, 123)'
+        item9.style.background = 'rgb(189, 166, 123)'
+        item2.innerHTML = ''
+        item5.innerHTML = ''
+        item1.innerHTML = ''    
+        item4.innerHTML = ''
+        item7.innerHTML = ''
+        item8.innerHTML = ''
+        setInterval(function(){title.innerHTML += '.'}, 1000)
+        setTimeout(function(){location.reload()}, 4000)
+    }
+}
+
+function game(id) {
+    let elemet = document.getElementById(id)
+    if (turn === 'x' && elemet.innerHTML === '') {
+        elemet.innerHTML = 'x'
+        turn = 'o'
+        title.innerHTML = 'O TURN'
+    }else if (turn === 'o' && elemet.innerHTML === '') {
+        elemet.innerHTML = 'o'
+        turn = 'x'
+        title.innerHTML = 'X TURN'
+    }
+    winner()
+}
+        </script>
+</body>
+</html> 
